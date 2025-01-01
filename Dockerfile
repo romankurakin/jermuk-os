@@ -1,8 +1,8 @@
-FROM fedora:latest
+FROM fedora:41
 
 RUN dnf -y upgrade && \
     dnf -y install \
-    zig \
+    zig-0.13.0 \
     qemu-system-aarch64 \
     && dnf clean all
 
