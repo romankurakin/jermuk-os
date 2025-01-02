@@ -1,21 +1,11 @@
 const std = @import("std");
+const cpu = @import("cpu.zig");
+const bsp = @import("bsp.zig");
 
-pub export fn main() callconv(.C) noreturn {
-    asm volatile (
-        \\1:
-        \\  wfe
-        \\  b 1b
-        ::: "memory");
-    unreachable;
+export fn main() noreturn {
+    kernel_init();
 }
 
-pub fn panic(msg: []const u8, error_return_trace: ?*std.builtin.StackTrace, _: ?usize) noreturn {
-    _ = msg;
-    _ = error_return_trace;
-    asm volatile (
-        \\1:
-        \\  wfe
-        \\  b 1b
-        ::: "memory");
-    unreachable;
+pub fn kernel_init() noreturn {
+    cpu.wait_forever();
 }

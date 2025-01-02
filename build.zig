@@ -25,7 +25,7 @@ pub fn build(b: *std.Build) void {
             .root_source_file = .{ .cwd_relative = "src/main.zig" },
         });
 
-        const base_ld_path = "src/_arch/bsp/raspberrypi";
+        const base_ld_path = "src/bsp/raspberrypi";
         const ld_script = switch (board) {
             .raspi4b => base_ld_path ++ "/raspi4b/kernel.ld",
             .raspi5 => base_ld_path ++ "/raspi5/kernel.ld",
