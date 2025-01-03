@@ -31,11 +31,8 @@ This project uses Docker and [Just](https://github.com/casey/just) for developme
 ### Available Commands
 
 ```bash
-# Build the Docker image
-just docker-build
-
 # Build kernels for all supported boards
-just build
+just build-all
 
 # Run Raspberry Pi 4B in QEMU
 just run
@@ -61,10 +58,6 @@ The build process generates kernel images for each supported board:
 
 - `zig-out/bin/boards/raspi4b/kernel8.img` - For Raspberry Pi 4B
 - `zig-out/bin/boards/raspi5/kernel8.img` - For Raspberry Pi 5
-
-## Credits
-
-This project is based on the [Rust Raspberry Pi OS Tutorials](https://github.com/rust-embedded/rust-raspberrypi-OS-tutorials) by the Rust Embedded Working Group. The original tutorials provided the foundation and structure for this Zig implementation.
 
 ## License
 

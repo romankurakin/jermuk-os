@@ -1,5 +1,3 @@
-/* Raspberry Pi AArch64 Kernel Linker Script */
-
 /* Physical memory starts at 0x0 */
 __rpi_phys_dram_start_addr = 0x0;
 
@@ -40,7 +38,7 @@ SECTIONS
     .bss (NOLOAD) : ALIGN(16) {
         . = ALIGN(16);          /* Align for efficient zeroing */
         __bss_start = .;
-        *(.bss .bss.* .sbss .sbss.*) 
+        *(.bss .bss.* .sbss .sbss.*)
         *(COMMON)
         . = ALIGN(16);
         __bss_end = .;

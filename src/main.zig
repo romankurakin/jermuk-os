@@ -1,11 +1,14 @@
-const std = @import("std");
 const cpu = @import("cpu.zig");
 const bsp = @import("bsp.zig");
 
 export fn main() noreturn {
-    kernel_init();
+    kernelInit() catch {
+        cpu.waitForever();
+    };
 }
 
-pub fn kernel_init() noreturn {
-    cpu.wait_forever();
+fn kernelInit() !noreturn {
+    try bsp.board.init();
+
+    cpu.waitForever();
 }
