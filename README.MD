@@ -1,6 +1,6 @@
 # Jermuk OS
 
-A bare metal operating system for Raspberry Pi, written in Zig. Named after Jermuk (Ջերմուկ), the city in Armenia known for its mineral water and health resorts.
+A bare-metal operating system for the Raspberry Pi, written in Zig. It is named after Jermuk (Ջերմուկ), a town in Armenia.
 
 ## About
 
@@ -56,7 +56,7 @@ The project uses a Docker for consistent development environment.
 
 The build process generates kernel images for each supported board:
 
-- `zig-out/bin/boards/raspi4b/kernel8.img` - For Raspberry Pi 4B
+- `zig-out/bin/boards/raspi4b/kernel8.img` - For Raspberry Pi 4
 - `zig-out/bin/boards/raspi5/kernel8.img` - For Raspberry Pi 5
 
 ## License
