@@ -1,3 +1,4 @@
+// This macro provides reliable PC-relative addressing for accessing symbols.
 .macro ADR_REL register, symbol
     adrp    \register, \symbol            // Load page address
     add     \register, \register, #:lo12:\symbol  // Add page offset
@@ -46,11 +47,10 @@ _start:
     // Clean up registers before transition
     mov     x29, xzr                    // Clear frame pointer
     mov     x30, xzr                    // Clear link register
-
     eret                                // Jump to EL1
 
 .align 4                                // Ensure aligned entry
-s:
+el1_entry:
     // Initialize BSS if it exists
     ADR_REL x0, __bss_start
     ADR_REL x1, __bss_end
@@ -73,7 +73,6 @@ s:
     // Clean up before jumping to Zig code
     mov     x29, xzr                    // Clear frame pointer
     mov     x30, xzr                    // Clear link register
-
     b       main                        // Jump to Zig main function
 
 // Parking loop for non-boot cores or error conditions
@@ -83,4 +82,3 @@ s:
 
 // Add size and type information for debugging
 .size   _start, . - _start
-.type   _start, function
